@@ -10,6 +10,10 @@ import { MatTableModule } from '@angular/material/table'
 import { MatSelectModule } from '@angular/material/select'
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
+
+import { MatCardModule } from '@angular/material/card';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,6 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    MatTabsModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
