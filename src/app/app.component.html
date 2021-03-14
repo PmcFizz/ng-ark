@@ -164,16 +164,388 @@
       </mat-card>
     </mat-tab>
     <mat-tab label="ARKQ">
-      <mat-card>Simple card</mat-card>
+      <mat-card>
+        <mat-card-title>ARKQ / Autonomous Technology & Robotics ETF</mat-card-title>
+        <mat-card-content>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="company">
+              <th mat-header-cell *matHeaderCellDef> Company </th>
+              <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ticker">
+              <th mat-header-cell *matHeaderCellDef> Ticker </th>
+              <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="t212">
+              <th mat-header-cell *matHeaderCellDef> T212 </th>
+              <td mat-cell *matCellDef="let element"> {{element.t212}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="t212isa">
+              <th mat-header-cell *matHeaderCellDef> T212 <br/>
+                ISA </th>
+              <td mat-cell *matCellDef="let element"> {{element.t212isa}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sharesOnStart">
+              <th mat-header-cell *matHeaderCellDef> Shares on <br/>3/10/21</th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="valueOnStart">
+              <th mat-header-cell *matHeaderCellDef> Value on<br/> 3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.valueOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceStart">
+              <th mat-header-cell *matHeaderCellDef> Stock price on <br/>3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="weightOnStart">
+              <th mat-header-cell *matHeaderCellDef> Weight on <br/>3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.weightOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="sharesOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Shares on <br/>3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="valueOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Value on<br/> 3/11/21</th>
+              <td mat-cell *matCellDef="let element"> {{element.valueOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceEnd">
+              <th mat-header-cell *matHeaderCellDef> Stock price on <br/> 3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="weightOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Weight on <br/>3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.weightOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="sharesDifference">
+              <th mat-header-cell *matHeaderCellDef> Shares <br/> difference </th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesDifference}} </td>
+            </ng-container>
+            <ng-container matColumnDef="shareInOut">
+              <th mat-header-cell *matHeaderCellDef> Shares In/Out<br/> Flow Valuation </th>
+              <td mat-cell *matCellDef="let element"> {{element.shareInOut}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valueDifference">
+              <th mat-header-cell *matHeaderCellDef> Value <br/>difference </th>
+              <td mat-cell *matCellDef="let element"> {{element.valueDifference}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceDifferenceNumber">
+              <th mat-header-cell *matHeaderCellDef> Stock price <br/>difference ($) </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceDifferenceNumber}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceDifferencePercent">
+              <th mat-header-cell *matHeaderCellDef> Stock price<br/> difference (%) </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceDifferencePercent}} </td>
+            </ng-container>
+            <ng-container matColumnDef="widthDifference">
+              <th mat-header-cell *matHeaderCellDef> Weight <br/>difference  </th>
+              <td mat-cell *matCellDef="let element"> {{element.widthDifference}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="observation">
+              <th mat-header-cell *matHeaderCellDef> Observation<br/> for period  </th>
+              <td mat-cell *matCellDef="let element"> {{element.observation}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
     </mat-tab>
     <mat-tab label="ARKW">
-      <mat-card>Simple card</mat-card>
+      <mat-card>
+        <mat-card-title>ARKW / Next Generation Internet ETF</mat-card-title>
+        <mat-card-content>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="company">
+              <th mat-header-cell *matHeaderCellDef> Company </th>
+              <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ticker">
+              <th mat-header-cell *matHeaderCellDef> Ticker </th>
+              <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="t212">
+              <th mat-header-cell *matHeaderCellDef> T212 </th>
+              <td mat-cell *matCellDef="let element"> {{element.t212}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="t212isa">
+              <th mat-header-cell *matHeaderCellDef> T212 <br/>
+                ISA </th>
+              <td mat-cell *matCellDef="let element"> {{element.t212isa}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sharesOnStart">
+              <th mat-header-cell *matHeaderCellDef> Shares on <br/>3/10/21</th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="valueOnStart">
+              <th mat-header-cell *matHeaderCellDef> Value on<br/> 3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.valueOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceStart">
+              <th mat-header-cell *matHeaderCellDef> Stock price on <br/>3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="weightOnStart">
+              <th mat-header-cell *matHeaderCellDef> Weight on <br/>3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.weightOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="sharesOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Shares on <br/>3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="valueOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Value on<br/> 3/11/21</th>
+              <td mat-cell *matCellDef="let element"> {{element.valueOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceEnd">
+              <th mat-header-cell *matHeaderCellDef> Stock price on <br/> 3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="weightOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Weight on <br/>3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.weightOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="sharesDifference">
+              <th mat-header-cell *matHeaderCellDef> Shares <br/> difference </th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesDifference}} </td>
+            </ng-container>
+            <ng-container matColumnDef="shareInOut">
+              <th mat-header-cell *matHeaderCellDef> Shares In/Out<br/> Flow Valuation </th>
+              <td mat-cell *matCellDef="let element"> {{element.shareInOut}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valueDifference">
+              <th mat-header-cell *matHeaderCellDef> Value <br/>difference </th>
+              <td mat-cell *matCellDef="let element"> {{element.valueDifference}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceDifferenceNumber">
+              <th mat-header-cell *matHeaderCellDef> Stock price <br/>difference ($) </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceDifferenceNumber}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceDifferencePercent">
+              <th mat-header-cell *matHeaderCellDef> Stock price<br/> difference (%) </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceDifferencePercent}} </td>
+            </ng-container>
+            <ng-container matColumnDef="widthDifference">
+              <th mat-header-cell *matHeaderCellDef> Weight <br/>difference  </th>
+              <td mat-cell *matCellDef="let element"> {{element.widthDifference}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="observation">
+              <th mat-header-cell *matHeaderCellDef> Observation<br/> for period  </th>
+              <td mat-cell *matCellDef="let element"> {{element.observation}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
     </mat-tab>
     <mat-tab label="ARKG">
-      <mat-card>Simple card</mat-card>
+      <mat-card>
+        <mat-card-title>ARKG / Genomic Revolution ETF</mat-card-title>
+        <mat-card-content>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="company">
+              <th mat-header-cell *matHeaderCellDef> Company </th>
+              <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ticker">
+              <th mat-header-cell *matHeaderCellDef> Ticker </th>
+              <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="t212">
+              <th mat-header-cell *matHeaderCellDef> T212 </th>
+              <td mat-cell *matCellDef="let element"> {{element.t212}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="t212isa">
+              <th mat-header-cell *matHeaderCellDef> T212 <br/>
+                ISA </th>
+              <td mat-cell *matCellDef="let element"> {{element.t212isa}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sharesOnStart">
+              <th mat-header-cell *matHeaderCellDef> Shares on <br/>3/10/21</th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="valueOnStart">
+              <th mat-header-cell *matHeaderCellDef> Value on<br/> 3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.valueOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceStart">
+              <th mat-header-cell *matHeaderCellDef> Stock price on <br/>3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="weightOnStart">
+              <th mat-header-cell *matHeaderCellDef> Weight on <br/>3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.weightOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="sharesOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Shares on <br/>3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="valueOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Value on<br/> 3/11/21</th>
+              <td mat-cell *matCellDef="let element"> {{element.valueOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceEnd">
+              <th mat-header-cell *matHeaderCellDef> Stock price on <br/> 3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="weightOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Weight on <br/>3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.weightOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="sharesDifference">
+              <th mat-header-cell *matHeaderCellDef> Shares <br/> difference </th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesDifference}} </td>
+            </ng-container>
+            <ng-container matColumnDef="shareInOut">
+              <th mat-header-cell *matHeaderCellDef> Shares In/Out<br/> Flow Valuation </th>
+              <td mat-cell *matCellDef="let element"> {{element.shareInOut}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valueDifference">
+              <th mat-header-cell *matHeaderCellDef> Value <br/>difference </th>
+              <td mat-cell *matCellDef="let element"> {{element.valueDifference}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceDifferenceNumber">
+              <th mat-header-cell *matHeaderCellDef> Stock price <br/>difference ($) </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceDifferenceNumber}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceDifferencePercent">
+              <th mat-header-cell *matHeaderCellDef> Stock price<br/> difference (%) </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceDifferencePercent}} </td>
+            </ng-container>
+            <ng-container matColumnDef="widthDifference">
+              <th mat-header-cell *matHeaderCellDef> Weight <br/>difference  </th>
+              <td mat-cell *matCellDef="let element"> {{element.widthDifference}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="observation">
+              <th mat-header-cell *matHeaderCellDef> Observation<br/> for period  </th>
+              <td mat-cell *matCellDef="let element"> {{element.observation}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
     </mat-tab>
     <mat-tab label="ARKF">
-      <mat-card>Simple card</mat-card>
+      <mat-card>
+        <mat-card-title>ARKF / Fintech Innovation ETF</mat-card-title>
+        <mat-card-content>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="company">
+              <th mat-header-cell *matHeaderCellDef> Company </th>
+              <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ticker">
+              <th mat-header-cell *matHeaderCellDef> Ticker </th>
+              <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="t212">
+              <th mat-header-cell *matHeaderCellDef> T212 </th>
+              <td mat-cell *matCellDef="let element"> {{element.t212}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="t212isa">
+              <th mat-header-cell *matHeaderCellDef> T212 <br/>
+                ISA </th>
+              <td mat-cell *matCellDef="let element"> {{element.t212isa}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sharesOnStart">
+              <th mat-header-cell *matHeaderCellDef> Shares on <br/>3/10/21</th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="valueOnStart">
+              <th mat-header-cell *matHeaderCellDef> Value on<br/> 3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.valueOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceStart">
+              <th mat-header-cell *matHeaderCellDef> Stock price on <br/>3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="weightOnStart">
+              <th mat-header-cell *matHeaderCellDef> Weight on <br/>3/10/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.weightOnStart}} </td>
+            </ng-container>
+            <ng-container matColumnDef="sharesOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Shares on <br/>3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="valueOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Value on<br/> 3/11/21</th>
+              <td mat-cell *matCellDef="let element"> {{element.valueOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceEnd">
+              <th mat-header-cell *matHeaderCellDef> Stock price on <br/> 3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="weightOnEnd">
+              <th mat-header-cell *matHeaderCellDef> Weight on <br/>3/11/21 </th>
+              <td mat-cell *matCellDef="let element"> {{element.weightOnEnd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="sharesDifference">
+              <th mat-header-cell *matHeaderCellDef> Shares <br/> difference </th>
+              <td mat-cell *matCellDef="let element"> {{element.sharesDifference}} </td>
+            </ng-container>
+            <ng-container matColumnDef="shareInOut">
+              <th mat-header-cell *matHeaderCellDef> Shares In/Out<br/> Flow Valuation </th>
+              <td mat-cell *matCellDef="let element"> {{element.shareInOut}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valueDifference">
+              <th mat-header-cell *matHeaderCellDef> Value <br/>difference </th>
+              <td mat-cell *matCellDef="let element"> {{element.valueDifference}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceDifferenceNumber">
+              <th mat-header-cell *matHeaderCellDef> Stock price <br/>difference ($) </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceDifferenceNumber}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stockPriceDifferencePercent">
+              <th mat-header-cell *matHeaderCellDef> Stock price<br/> difference (%) </th>
+              <td mat-cell *matCellDef="let element"> {{element.stockPriceDifferencePercent}} </td>
+            </ng-container>
+            <ng-container matColumnDef="widthDifference">
+              <th mat-header-cell *matHeaderCellDef> Weight <br/>difference  </th>
+              <td mat-cell *matCellDef="let element"> {{element.widthDifference}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="observation">
+              <th mat-header-cell *matHeaderCellDef> Observation<br/> for period  </th>
+              <td mat-cell *matCellDef="let element"> {{element.observation}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
     </mat-tab>
     <mat-tab label="Individual Stocks">
       <mat-card>Simple card</mat-card>
