@@ -9,7 +9,7 @@
       <mat-icon >help</mat-icon>
     </button>
     <mat-icon class="example-icon" style="margin-right: 1.5rem;" aria-hidden="false" aria-label="Example delete icon">brightness_5</mat-icon>
-    <mat-slide-toggle>Slide me!</mat-slide-toggle>
+    <mat-slide-toggle></mat-slide-toggle>
     <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">bedtime</mat-icon>
   </mat-toolbar-row>
 
@@ -38,9 +38,6 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
-
-    <p>Selected range: {{range.value | json}}</p>
-
 
     <span class="ml-16">Include:</span>
 
