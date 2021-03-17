@@ -1,15 +1,11 @@
-import {FormGroup, FormControl} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {Component, ViewChild, AfterViewInit} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {merge, Observable, of as observableOf} from 'rxjs';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { FormGroup, FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge, Observable, of as observableOf } from 'rxjs';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface ARKKElement {
   company: string;
@@ -25,23 +21,48 @@ export interface ARKKElement {
   stockPriceEnd: string;
   weightOnEnd: string;
   sharesDifference: string;
-  shareInOut:string;
-  valueDifference:string;
+  shareInOut: string;
+  valueDifference: string;
   stockPriceDifferenceNumber: string;
   stockPriceDifferencePercent: string;
   widthDifference: string;
   observation: string;
 }
 
+export interface ResItem {
+  company: string
+  date: string
+  percent: string
+  shares: string
+  ticker: string
+  value: string
+}
+
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 const ELEMENT_DATA: ARKKElement[] = [
-  {company:'1',ticker:'1',t212:true,
-  t212isa:false,sharesOnStart:'1',valueOnStart:'1',
-  stockPriceStart:'1',weightOnStart:'1',
-  sharesOnEnd:'1',valueOnEnd:'1',
-  stockPriceEnd:'1',weightOnEnd:'1',sharesDifference:'1',
-  shareInOut:'1',valueDifference:'1',stockPriceDifferenceNumber:'1',stockPriceDifferencePercent:'1',
-  widthDifference:'1',
-  observation:'1',}
+  {
+    company: '1', ticker: '1', t212: true,
+    t212isa: false, sharesOnStart: '1', valueOnStart: '1',
+    stockPriceStart: '1', weightOnStart: '1',
+    sharesOnEnd: '1', valueOnEnd: '1',
+    stockPriceEnd: '1', weightOnEnd: '1', sharesDifference: '1',
+    shareInOut: '1', valueDifference: '1', stockPriceDifferenceNumber: '1', stockPriceDifferencePercent: '1',
+    widthDifference: '1',
+    observation: '1'
+  }, {
+    company: '2', ticker: '3', t212: true,
+    t212isa: false, sharesOnStart: '4', valueOnStart: '2',
+    stockPriceStart: '2', weightOnStart: '2',
+    sharesOnEnd: '2', valueOnEnd: '2',
+    stockPriceEnd: '2', weightOnEnd: '2', sharesDifference: '2',
+    shareInOut: '2', valueDifference: '2', stockPriceDifferenceNumber: '2', stockPriceDifferencePercent: '2',
+    widthDifference: '2',
+    observation: '2',
+  }
 ];
 
 
@@ -51,51 +72,8 @@ const ELEMENT_DATA: ARKKElement[] = [
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements AfterViewInit {
-  displayedColumns2: string[] = ['created', 'state', 'number', 'title'];
-  exampleDatabase: ExampleHttpDatabase | null;
-  filteredAndPagedIssues: Observable<GithubIssue[]>;
-
-  resultsLength = 0;
-  isLoadingResults = true;
-  isRateLimitReached = false;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
-  constructor(private _httpClient: HttpClient) {}
-
-  ngAfterViewInit() {
-    this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
-
-    this.filteredAndPagedIssues = merge(this.sort.sortChange, this.paginator.page)
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoadingResults = true;
-          return this.exampleDatabase!.getRepoIssues(
-            this.sort.active, this.sort.direction, this.paginator.pageIndex);
-        }),
-        map(data => {
-          // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
-          this.isRateLimitReached = false;
-          this.resultsLength = data.total_count;
-
-          return data.items;
-        }),
-        catchError(() => {
-          this.isLoadingResults = false;
-          // Catch if the GitHub API has reached its rate limit. Return empty data.
-          this.isRateLimitReached = true;
-          return observableOf([]);
-        })
-      );
-  }
-
-  resetPaging(): void {
-    this.paginator.pageIndex = 0;
-  }
-
+  constructor(private _httpClient: HttpClient) { }
 
   title = 'ng-ark';
   selectedValue: string;
@@ -103,13 +81,11 @@ export class AppComponent implements AfterViewInit {
     start: new FormControl(),
     end: new FormControl()
   });
-
   foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    { value: 'steak-0', viewValue: 'Steak' },
+    { value: 'pizza-1', viewValue: 'Pizza' },
+    { value: 'tacos-2', viewValue: 'Tacos' }
   ];
-
   displayedColumns: string[] = [
     'company',
     'ticker',
@@ -130,32 +106,75 @@ export class AppComponent implements AfterViewInit {
     'stockPriceDifferencePercent',
     'widthDifference',
     'observation'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+
+
+  exampleDatabase: ExampleHttpDatabase | null;
+  filteredAndPagedIssues: Observable<ARKKElement[] | ARKKElement | []>;
+  isLoadingResults = true;
+  isRateLimitReached = false;
+  resultsLength = 0;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+
+    this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
+
+    this.filteredAndPagedIssues = merge(this.sort.sortChange, 0)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          this.isLoadingResults = true;
+          return this.exampleDatabase!.getRepoIssues();
+        }),
+        map(data => {
+          this.isLoadingResults = false;
+          this.isRateLimitReached = false;
+
+          const item: ARKKElement = {
+            company: '1',
+            ticker: '1',
+            t212: true,
+            t212isa: false,
+            sharesOnStart: '1',
+            valueOnStart: '1',
+            stockPriceStart: '1',
+            weightOnStart: '1',
+            sharesOnEnd: '1',
+            valueOnEnd: '1',
+            stockPriceEnd: '1',
+            weightOnEnd: '1',
+            sharesDifference: '1',
+            shareInOut: '1',
+            valueDifference: '1',
+            stockPriceDifferenceNumber: '1',
+            stockPriceDifferencePercent: '1',
+            widthDifference: '1',
+            observation: '1',
+          }
+
+          return item;
+        }),
+        catchError(() => {
+          this.isLoadingResults = false;
+          // Catch if the GitHub API has reached its rate limit. Return empty data.
+          this.isRateLimitReached = true;
+          return observableOf([]);
+        })
+      );
+  }
 
 }
 
 
-export interface GithubApi {
-  items: GithubIssue[];
-  total_count: number;
-}
-
-export interface GithubIssue {
-  created_at: string;
-  number: string;
-  state: string;
-  title: string;
-}
-
-/** An example database that the data source uses to retrieve data for the table. */
 export class ExampleHttpDatabase {
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _httpClient: HttpClient) { }
 
-  getRepoIssues(sort: string, order: string, page: number): Observable<GithubApi> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl =
-        `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${page + 1}`;
+  getRepoIssues(): Observable<ResItem[]> {
+    const href = 'http://localhost:3000/arkk';
+    const requestUrl = `${href}?q=repo:angular/components`;
 
-    return this._httpClient.get<GithubApi>(requestUrl);
+    return this._httpClient.get<ResItem[]>(requestUrl);
   }
 }
